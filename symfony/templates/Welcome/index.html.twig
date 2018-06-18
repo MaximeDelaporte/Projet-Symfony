@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome in our room locations{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        margin: 0;
+    }
+    .navbar {
+        margin: 0;
+        font: 18px/1.5 sans-serif;
+        background: #5eb5e0;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+    }
+    li {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    a {
+        text-decoration: none;
+    }
+    .welcome-page {
+        width: 100%;
+    }
+    .welcome-page code { background: #F5F5F5;}
+</style>
+<div class="welcome-page">
+    <ul class="navbar">
+        <li>Welcome, </li>
+        <li><a href="#">Sign in</a></li>
+        <li><a href="#">Sign up</a></li>
+    </ul>
+    <div class="welcome-body-page">
+        <h1> Welcome to our Room Location</h1>
+
+    </div>
+</div>
+
+{% endblock %}
