@@ -20,7 +20,9 @@ final class Version20180618144620 extends AbstractMigration
         $this->addSql(
             'CREATE TABLE rooms (id INT AUTO_INCREMENT NOT NULL, 
                                     name VARCHAR(120) NOT NULL, 
-                                    adresse VARCHAR(255) NOT NULL, 
+                                    adress VARCHAR(255) NOT NULL,
+                                    city VARCHAR(60) NOT NULL,
+                                    postal_code VARCHAR(5) NOT NULL,
                                     dispo BOOLEAN NOT NULL,
                                     date_dispo DATETIME DEFAULT NULL,
                                     PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
