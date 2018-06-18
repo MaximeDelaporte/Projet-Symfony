@@ -11,6 +11,10 @@ class User {
   private $email;
   private $password;
   private $bankAccount;
+<<<<<<< refs/remotes/origin/dev
+=======
+  @OneToOne(targetEntity="Room", mappedBy="id")
+>>>>>>> [General] Start of Entity
   private $rentedRoom; // instance of Room
   private $receips; // instance of Receip
 
