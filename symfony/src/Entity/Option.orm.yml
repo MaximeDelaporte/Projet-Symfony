@@ -1,0 +1,23 @@
+# config/doctrine/Option.orm.yml
+App\Entity\Option:
+  type: entity
+
+  #primary key
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  #Columns
+  fields:
+    name:
+      type: string
+      length: 100
+    price:
+      type: integer
+
+  #Foreign key
+  ManyToMany:
+    rooms:
+      targetEntity: Room
+      
