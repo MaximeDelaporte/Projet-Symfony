@@ -11,7 +11,6 @@ class User {
   private $email;
   private $password;
   private $bankAccount;
-  @OneToOne(targetEntity="Room", mappedBy="id")
   private $rentedRoom; // instance of Room
   private $receips; // instance of Receip
 

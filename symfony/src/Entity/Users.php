@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity
  * @UniqueEntity(fields="email", message="This email address is already in use")
  */
-class User implements UserInterface
+class Users implements UserInterface
 {
     /**
      * @ORM\Id;
@@ -86,15 +86,19 @@ class User implements UserInterface
 
     public function getSurname()
     {
-        return $this->name;
+        return $this->surname;
     }
 
     public function getLastname()
     {
-        return $this->name;
+        return $this->lastname;
     }
 
     public function getEmail()
+    {
+        return $this->email;
+    }
+    public function getUsername()
     {
         return $this->email;
     }
