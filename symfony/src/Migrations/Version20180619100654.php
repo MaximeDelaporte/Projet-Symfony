@@ -18,7 +18,7 @@ final class Version20180619100654 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE reservation (id INT AUTO_INCREMENT NOT NULL, date_start DATE NOT NULL, date_end DATE NOT NULL, room_id INT DEFAULT NULL, option_id INT DEFAULT NULL, user_id INT DEFAULT NULL, PRIMARY KEY(reservation_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE reservation (id INT AUTO_INCREMENT NOT NULL, date_start DATE NOT NULL, date_end DATE NOT NULL, room_id INT DEFAULT NULL, option_id INT DEFAULT NULL, user_id INT DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
 
         $this->addSql('ALTER TABLE reservation ADD CONSTRAINT FK_34DCD176F5B7AF75 FOREIGN KEY (room_id) REFERENCES rooms (id)');
         $this->addSql('ALTER TABLE reservation ADD CONSTRAINT FK_34DCD176F5B7AF76 FOREIGN KEY (option_id) REFERENCES options (id)');
