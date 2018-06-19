@@ -8,33 +8,31 @@
 
 namespace App\Controller;
 
-use App\Entity\Users;
+use App\Entity\Rooms;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class Registration extends Controller
+class RoomCreation extends Controller
 {
     /**
-     * @Route("/registration", name="registration")
+     * @Route("/room/create", name="create Room")
      * @param Request $request
-     * @param UserPasswordEncoderInterface $passwordEncoder
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function register(Request $request)
     {
-        $user = new Users();
-        $form = $this->createForm(UserType::class, $user);
+        $room = new Rooms();
+        $form = $this->createForm(RoomType::class, $room);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
-            $user->setPassword($password);
+
 
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
+            $entityManager->persist($room);
             $entityManager->flush();
 
             //redirect to a route which send a confirmation that his account is create
@@ -42,7 +40,7 @@ class Registration extends Controller
         }
 
         return $this->render(
-            'register.html.twig',
+            'create-room.html.twig',
             array('form' => $form->createView())
         );
     }
