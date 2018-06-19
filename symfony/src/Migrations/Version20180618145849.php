@@ -17,11 +17,11 @@ final class Version20180618145849 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql(
-            'CREATE TABLE invoices (id INT AUTO_INCREMENT NOT NULL, 
+            'CREATE TABLE invoices (invoice_id INT AUTO_INCREMENT NOT NULL, 
                                     date_created DATETIME NOT NULL, 
                                     url VARCHAR(255) NOT NULL,
                                     name_room VARCHAR(80) NOT NULL, 
-                                    PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+                                    PRIMARY KEY(invoice_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
     }
 
     public function down(Schema $schema) : void
@@ -29,7 +29,7 @@ final class Version20180618145849 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
         
-        $this->addSql('ALTER TABLE invoices DROP reservation');
+        $this->addSql('DROP TABLE invoices');
     }
     
 }

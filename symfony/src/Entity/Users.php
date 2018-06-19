@@ -123,7 +123,7 @@ class Users implements UserInterface
         return $this->location;
     }
 
-    public function setLocation()
+    public function setLocation($location)
     {
         $this->location = $location;
     }

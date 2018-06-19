@@ -17,12 +17,13 @@ final class Version20180618145031 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql(
-            'CREATE TABLE options (id INT AUTO_INCREMENT NOT NULL, 
+            'CREATE TABLE options (option_id INT AUTO_INCREMENT NOT NULL, 
                                     name_option VARCHAR(30) NOT NULL, 
                                     price INT NOT NULL,
-                                    PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+                                    room_id INT DEFAULT NULL,
+                                    PRIMARY KEY(option_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         
-        $this->addSql('ALTER TABLE options ADD CONSTRAINT FK_34DCD176F5B7AF75 FOREIGN KEY (rooms_id) REFERENCES rooms (id)');
+        $this->addSql('ALTER TABLE options ADD CONSTRAINT FK_34DCD176F5B7AF79 FOREIGN KEY (room_id) REFERENCES rooms (room_id)');
 }
 
     public function down(Schema $schema) : void
@@ -30,6 +31,6 @@ final class Version20180618145031 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
         
-        $this->addSql('ALTER TABLE options DROP reservation');
+        $this->addSql('DROP TABLE options');
     }
 }
