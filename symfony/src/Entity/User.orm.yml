@@ -1,0 +1,47 @@
+# config/doctrine/User.orm.yml
+App\Entity\User:
+  type: entity
+
+  #Primary Key
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+
+  #Fields
+  fields:
+    surname:
+      type: string
+      length: 100
+
+    lastname:
+      type: string
+      length: 100
+
+    email:
+      type: string
+      length: 100
+      unique: true
+
+    password:
+      type: string
+      length: 20
+
+    bankAccount:
+      type: string
+      length: 20
+
+    rentedRoom:
+      type: integer
+
+  # related to Many
+  oneToMany:
+    receips:
+      targetEntity: Receip
+      mappedBy: User
+
+  oneToOne:
+    rentedRoom:
+      targetEntity: Room
+      mappedBy: User

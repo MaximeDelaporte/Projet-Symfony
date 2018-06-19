@@ -1,0 +1,46 @@
+# config/doctrine/Room.orm.yml
+App\Entity\Room:
+  type: entity
+
+  #Primary Key
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+
+  #Fields
+  fields:
+    name:
+      type: string
+      length: 200
+
+    location:
+      type: string
+      length: 100
+
+    city:
+      type: string
+      length: 50
+
+    cp:
+      type: string
+      length: 10
+
+    description:
+      type: string
+      length: 255
+      nullable: true
+
+    capacity:
+      type: double
+
+    isRented:
+      type: boolean
+      default: false
+
+  #ManytoMany
+  manyToMany:
+    options:
+      targetEntity: Option
+      mappedBy: rooms

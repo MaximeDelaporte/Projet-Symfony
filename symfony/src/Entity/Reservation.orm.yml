@@ -1,0 +1,53 @@
+# config/doctrine/Reservation.orm.yml
+App\Entity\User:
+  type: entity
+
+  #Primary Key
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+
+  #Fields
+  fields:
+    createdAt:
+        type: datetime
+
+    rentedDateBegin:
+      type: datetime
+
+    rentedDateEnd:
+      type: datetime
+
+    price:
+      type: double
+
+  # related to Many
+  manyToMany:
+    options:
+      targetEntity: Option
+    joinTable:
+      name: options_reserved
+      joinColumns:
+        joinColumn:
+          name: option_id
+          referencedColumnName: id
+      inverseJoinColumns:
+        joinColumn:
+          name: reservation_id
+          referenceColumnName: id
+          unique: true
+
+  oneToOne:
+    user:
+      targetEntity: User
+      mappedBy: id
+
+    room:
+      targetEntity: Room
+      mappedBy: id
+
+ lifecycleCallbacks:
+    prePersist: [ setCreatedAtValue ]
+    prePersist: [ setUpdatedAtValue ]

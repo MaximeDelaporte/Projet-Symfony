@@ -2,12 +2,21 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
+
 class Receip {
   private $id;
-  private $creationDate;
+  private $createdAt;
+  private $updatedAt;
   private $value;
-  @OneToOne(targetEntity="Room", mappedBy="id")
   private $room; //instance of Room
-  @OneToOne(targetEntity="User", mappedBy="id")
   private $user; //instance of User
+  private $reservation; //instance of Reservation
+
+  public function setCreatedAtValue(LifecycleEventArgs $event){
+      $this->createdAt = new \DateTime();
+  }
+    public function setUpdatedAtValue(LifecycleEventArgs $event){
+        $this->updatedAt = new \DateTime();
+    }
 }

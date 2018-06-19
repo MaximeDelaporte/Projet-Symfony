@@ -1,0 +1,36 @@
+# config/doctrine/Receip.orm.yml
+App\Entity\User:
+  type: entity
+
+  #Primary Key
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+
+  #Fields
+  fields:
+    createdAt:
+      type: datetime
+
+    value:
+      type: double
+
+  # One to One relations
+  oneToOne:
+    user:
+      targetEntity: User
+      mappedBy: id
+
+    room:
+      targetEntity: Room
+      mappedBy: id
+
+    reservation:
+      targetEntity:
+      mappedBy: id
+
+  lifecycleCallbacks:
+    prePersist: [ setCreatedAtValue ]
+    prePersist: [ setUpdatedAtValue ]

@@ -20,4 +20,8 @@ App\Entity\Option:
   ManyToMany:
     rooms:
       targetEntity: Room
+      inversedBy: options
+    joinTable:
+      name: Rooms
+
       

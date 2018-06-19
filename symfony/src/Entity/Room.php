@@ -14,15 +14,9 @@ class Room {
   private $description;
   private $capacity;
   private $isRented;
-  private $rentingDateBegin;
-  private $rentingDateEnd;
   private $options; //instance of options
-  private $pastRentingUsers; //instance of User
-  @OneToOne(targetEntity="User", mappedBy="id")
-  private $currentRentingUser; //instance of User
 
   public function __construct() {
     $this->options = new ArrayCollection();
-    $this->pastRentingUsers = new ArrayCollection();
   }
 }
