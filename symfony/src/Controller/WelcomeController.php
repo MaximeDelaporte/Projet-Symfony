@@ -29,6 +29,7 @@ class WelcomeController extends Controller
             'user_name' => 'My my',
         ]);
     }
+
     /**
      * @Route("/welcome/disconnected", name="disconnecting")
      */
