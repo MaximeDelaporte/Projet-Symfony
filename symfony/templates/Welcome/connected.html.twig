@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome in our room locations{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            margin: 0;
+        }
+        .navbar {
+            margin: 0;
+            font: 18px/1.5 sans-serif;
+            background: #5eb5e0;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: end;
+        }
+        li {
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 2px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .welcome-page {
+            width: 100%;
+        }
+        .welcome-page code { background: #F5F5F5;}
+        .welcome-body-page {
+            padding-left: 10px;
+        }
+        .welcome-body-page h1 {
+            text-align: center;
+        }
+    </style>
+    <div class="welcome-page">
+        <ul class="navbar">
+            <li>Welcome, {{ user_name }} </li>
+            <li><a href="{{ path('disconnecting') }}" id="logout">Sign out</a></li>
+        </ul>
+        <div class="welcome-body-page">
+            <h1> Welcome to our Room Location</h1>
+
+        </div>
+    </div>
+    {% block javascripts %}
+        <script>
+            const el = document.getElementById("logout");
+            el.addEventListener(onclick, () => {
+                alert("You've been disconnected");
+            }, false);
+        </script>
+    {% endblock %}
+{% endblock %}
