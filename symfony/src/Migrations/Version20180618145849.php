@@ -17,7 +17,7 @@ final class Version20180618145849 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql(
-            'CREATE TABLE invoices (invoice_id INT AUTO_INCREMENT NOT NULL, 
+            'CREATE TABLE invoices (id INT AUTO_INCREMENT NOT NULL, 
                                     date_created DATETIME NOT NULL, 
                                     url VARCHAR(255) NOT NULL,
                                     name_room VARCHAR(80) NOT NULL, 

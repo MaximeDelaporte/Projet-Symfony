@@ -17,7 +17,7 @@ final class Version20180618132413 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql(
-            'CREATE TABLE users (user_id INT AUTO_INCREMENT NOT NULL, 
+            'CREATE TABLE users (id INT AUTO_INCREMENT NOT NULL, 
                                     email VARCHAR(120) NOT NULL, 
                                     surname VARCHAR(40) NOT NULL, 
                                     lastname VARCHAR(40) NOT NULL,
