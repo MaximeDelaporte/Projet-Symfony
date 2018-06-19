@@ -21,7 +21,7 @@ class UsersController extends Controller
    {
       $users = $this->getDoctrine()
           ->getRepository(Users::class)
-           ->findAll();
+          ->findAll();
 
    return $this->render('Welcome/connected.html.twig', ['users' => $users]);
    }
