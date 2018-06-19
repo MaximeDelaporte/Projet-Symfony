@@ -38,7 +38,7 @@ class Registration extends Controller
             $entityManager->flush();
 
             //redirect to a route which send a confirmation that his account is create
-            return $this->redirectToRoute('registration/valid');
+            return $this->redirectToRoute('welcome');
         }
 
         return $this->render(

@@ -18,7 +18,6 @@ class Room {
   private $rentingDateEnd;
   private $options; //instance of options
   private $pastRentingUsers; //instance of User
-  @OneToOne(targetEntity="User", mappedBy="id")
   private $currentRentingUser; //instance of User
 
   public function __construct() {
