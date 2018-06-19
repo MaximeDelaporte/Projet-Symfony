@@ -6,12 +6,19 @@ use App\Entity\Option;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+<<<<<<< refs/remotes/origin/dev
 use Symfony\Component\Routing\Annotation\Route;
+=======
+>>>>>>> create entity rooms, registerOption and register Room
 
 class RegisterOption extends Controller
 {
     /**
+<<<<<<< refs/remotes/origin/dev
      * @Route("/postOption", name="postOption")
+=======
+     * @Route("/postRoom", name="postRoom")
+>>>>>>> create entity rooms, registerOption and register Room
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */

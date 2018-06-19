@@ -12,6 +12,7 @@ use App\Entity\Rooms;
 use App\Form\RoomType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+<<<<<<< refs/remotes/origin/dev:symfony/src/Controller/RoomRegistration.php
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -23,6 +24,18 @@ class RoomRegistration extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function register(Request $request)
+=======
+use Symfony\Component\HttpFoundation\Response;
+
+class RegisterRoom extends Controller
+{
+    /**
+     * @Route("/postRoom", name="postRoom")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function postRoom(Request $request)
+>>>>>>> create entity rooms, registerOption and register Room:symfony/src/Controller/RegisterRoom.php
     {
         $room = new Rooms();
         $form = $this->createForm(RoomType::class, $room);
@@ -35,6 +48,7 @@ class RoomRegistration extends Controller
             $entityManager->persist($room);
             $entityManager->flush();
 
+<<<<<<< refs/remotes/origin/dev:symfony/src/Controller/RoomRegistration.php
             //redirect to a route which send a confirmation that his account is create
             return $this->redirectToRoute('welcome/connected');
         }
@@ -43,5 +57,11 @@ class RoomRegistration extends Controller
             'create-room.html.twig',
             array('form' => $form->createView())
         );
+=======
+            return new Response('Saved new product with id '.$room->id());
+            
+        }
+>>>>>>> create entity rooms, registerOption and register Room:symfony/src/Controller/RegisterRoom.php
     }
+
 }
