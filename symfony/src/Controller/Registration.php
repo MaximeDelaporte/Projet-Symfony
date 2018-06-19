@@ -21,7 +21,7 @@ class Registration extends Controller
      * @Route("/registration", name="registration")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -38,7 +38,7 @@ class Registration extends Controller
             $entityManager->flush();
 
             //redirect to a route which send a confirmation that his account is create
-            return $this->redirectToRoute('welcome');
+            return $this->redirectToRoute('welcome/login');
         }
 
         return $this->render(

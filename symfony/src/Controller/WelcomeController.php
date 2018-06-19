@@ -18,9 +18,7 @@ class WelcomeController extends Controller
     }
 
     /**
-     * Matches /welcome/*
-     *
-     * @Route("/welcome/login", name="welcome_login")
+     * @Route("/welcome/connected", name="welcome_connected")
      */
 
     public function connected()

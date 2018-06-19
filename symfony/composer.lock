@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< refs/remotes/origin/dev
-    "content-hash": "6f318b11d3f14fe196a111f32031b699",
-=======
-    "content-hash": "9d461e018797ba91b9b002b3482a43e9",
->>>>>>> Adding welcome page
+    "content-hash": "7c4ef904e541181b4fea5c300bd90886",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -5698,8 +5694,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "doctrine/migrations": 20,
         "doctrine/doctrine-migrations-bundle": 20,
+        "doctrine/migrations": 20,
         "symfony/lts": 20
     },
     "prefer-stable": false,
