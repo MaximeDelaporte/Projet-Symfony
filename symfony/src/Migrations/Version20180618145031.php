@@ -21,7 +21,7 @@ final class Version20180618145031 extends AbstractMigration
                                     name_option VARCHAR(30) NOT NULL, 
                                     price INT NOT NULL,
                                     room_id INT DEFAULT NULL,
-                                    PRIMARY KEY(option_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+                                    PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         
         $this->addSql('ALTER TABLE options ADD CONSTRAINT FK_34DCD176F5B7AF79 FOREIGN KEY (room_id) REFERENCES rooms (id)');
 }

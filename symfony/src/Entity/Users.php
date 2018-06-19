@@ -28,16 +28,14 @@ class Users implements UserInterface
      * @ORM\Column(type="string", length=40)
      */
     protected $surname;
-
-    protected $lastname;
-
-    protected $location;
-
-
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=40)
      */
-    protected $role;
+    protected $lastname;
+    /**
+     * @ORM\Column(type="string", length=40)
+     */
+    protected $location;
 
     /**
      * @Assert\Length(max=4096)
@@ -148,7 +146,7 @@ class Users implements UserInterface
      */
     public function serialize(): string
     {
-        return serialize([$this->id, $this->username, $this->password]);
+        return serialize([$this->id, $this->surname, $this->lastname, $this->password]);
     }
  
     /**
@@ -156,6 +154,6 @@ class Users implements UserInterface
      */
     public function unserialize($serialized): void
     {
-        [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
+        [$this->id, $this->surname, $this->lastname ,$this->password] = unserialize($serialized, ['allowed_classes' => false]);
     }
 }

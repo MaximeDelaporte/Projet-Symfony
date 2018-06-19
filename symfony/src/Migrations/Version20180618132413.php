@@ -25,7 +25,7 @@ final class Version20180618132413 extends AbstractMigration
                                     phone VARCHAR(10)  NOT NULL,
                                     location VARCHAR(5) NOT NULL,
                                     bankData VARCHAR(50) DEFAULT NULL,
-                                    PRIMARY KEY(user_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+                                    PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
     }
 
     public function down(Schema $schema) : void

@@ -21,7 +21,7 @@ final class Version20180618145849 extends AbstractMigration
                                     date_created DATETIME NOT NULL, 
                                     url VARCHAR(255) NOT NULL,
                                     name_room VARCHAR(80) NOT NULL, 
-                                    PRIMARY KEY(invoice_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+                                    PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
     }
 
     public function down(Schema $schema) : void

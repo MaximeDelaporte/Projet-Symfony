@@ -30,15 +30,15 @@ class Registration extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $password =$passwordEncoder->encodePassword($user->getPlainPassword());
+            $password = $passwordEncoder->encodePassword($user->getPlainPassword());
             $user->setPassword($password);
 
-            $entityManager = $this->getDoctrine() ->getManager();
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
             //redirect to a route which send a confirmation that his account is create
-            //return $this->redirectToRoute();
+            return $this->redirectToRoute('registration/valid');
         }
 
         return $this->render(
