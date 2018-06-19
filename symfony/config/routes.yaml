@@ -1,7 +1,3 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
-
-app_login:
-    path: /registration
-    controller: App\Controller\Registration
