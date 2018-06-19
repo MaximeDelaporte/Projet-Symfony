@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class ConnectUserController extends Controller
+class connectUserController extends Controller
 {
     /**
      * @Route("/welcome/login", name="login")
@@ -27,7 +27,7 @@ class ConnectUserController extends Controller
         //last email entered by the user
         $lastEmail = $authenticationUtils->getLastUsername();
 
-        return $this->render('Welcome/login.html.twig', array(
+        return $this->render('welcome/login.html.twig', array(
             'last_email' => $lastEmail,
             'error' => $error,
         ));

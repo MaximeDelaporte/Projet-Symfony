@@ -7,35 +7,30 @@ use Doctrine\Migrations\AbstractMigration;
 
 /**
  * Auto-generated Migration
- * Table salles
+ * Table : options
  */
-final class Version20180618144620 extends AbstractMigration
+final class Version20180618145031 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql(
-            'CREATE TABLE rooms (id INT AUTO_INCREMENT NOT NULL, 
-                                    name VARCHAR(120) NOT NULL, 
-                                    adress VARCHAR(255) NOT NULL,
-                                    city VARCHAR(60) NOT NULL,
-                                    postal_code VARCHAR(5) NOT NULL,
-                                    description VARCHAR(255) NULL,
-                                    capacity INT NOT NULL,
-                                    isRented BOOLEAN NOT NULL,
-                               
+            'CREATE TABLE options (id INT AUTO_INCREMENT NOT NULL, 
+                                    name_option VARCHAR(30) NOT NULL, 
+                                    price INT NOT NULL,
+                                    room_id INT DEFAULT NULL,
                                     PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
-
-    }
+        
+        $this->addSql('ALTER TABLE options ADD CONSTRAINT FK_34DCD176F5B7AF79 FOREIGN KEY (room_id) REFERENCES rooms (id)');
+}
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
         
-        $this->addSql('DROP TABLE rooms');
+        $this->addSql('DROP TABLE options');
     }
 }

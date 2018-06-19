@@ -2,11 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Options;
+use App\Entity\Option;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 class RegisterOption extends Controller
 {
@@ -17,7 +16,7 @@ class RegisterOption extends Controller
      */
     public function postOption(Request $request)
     {
-        $option = new Options();
+        $option = new Option();
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
