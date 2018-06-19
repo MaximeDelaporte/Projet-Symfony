@@ -74,12 +74,12 @@ class Users implements UserInterface
         return $this->id;
     }
 
-    public function setSurname($name)
+    public function setSurname($surname)
     {
         $this->surname = $surname;
     }
 
-    public function setLastname($name)
+    public function setLastname($lastname)
     {
         $this->lastname = $lastname;
     }
