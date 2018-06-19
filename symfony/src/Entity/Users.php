@@ -31,6 +31,8 @@ class User implements UserInterface
 
     protected $lastname;
 
+    protected $location;
+
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -74,12 +76,12 @@ class User implements UserInterface
 
     public function setSurname($name)
     {
-        $this->name = $name;
+        $this->surname = $surname;
     }
 
     public function setLastname($name)
     {
-        $this->name = $name;
+        $this->lastname = $lastname;
     }
 
     public function getSurname()
@@ -110,6 +112,16 @@ class User implements UserInterface
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    public function setLocation()
+    {
+        $this->location = $location;
     }
 
     public function getPlainPassword()
