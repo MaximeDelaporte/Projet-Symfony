@@ -14,7 +14,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        return $this->render('welcome/index.html.twig');
+        return $this->render('Welcome/index.html.twig');
     }
 
     /**
@@ -23,7 +23,7 @@ class WelcomeController extends Controller
 
     public function connected()
     {
-        return $this->render('welcome/connected.html.twig', [
+        return $this->render('Welcome/connected.html.twig', [
             'user_name' => 'My my',
         ]);
     }

@@ -17,29 +17,19 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class RoomType extends AbstractType
+class OptionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('name', TextType::class)
-            ->add('city', TextType::class)
-            ->add('cp', NumberType::class)
-            ->add('location', TextType::class)
-            ->add('description', TextType::class)
-            ->add('capacity', NumberType::class)
-            ->add('options', EntityType::class, array(
-                'class' => Options::class,
-                'choice_label' => 'name',
-                'multiple' => true,
-                'expanded' => true,
-            ));
+            ->add('price', NumberType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Rooms::class,
+            'data_class' => Options::class,
         ));
     }
 }
