@@ -23,6 +23,7 @@ final class Version20180618144620 extends AbstractMigration
                                     adress VARCHAR(255) NOT NULL,
                                     city VARCHAR(60) NOT NULL,
                                     postal_code VARCHAR(5) NOT NULL,
+                                    capacity INT NOT NULL,
                                     dispo BOOLEAN NOT NULL,
                                     date_dispo DATETIME DEFAULT NULL,
                                     user_id INT DEFAULT NULL,
