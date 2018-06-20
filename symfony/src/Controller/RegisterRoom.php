@@ -1,10 +1,21 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: admin
+ * Date: 19/06/2018
+ * Time: 09:16
+ */
 
 namespace App\Controller;
 
-use App\Entity\Room;
+use App\Entity\Rooms;
+use App\Form\RoomType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 use Symfony\Component\HttpFoundation\Response;
 
 class RegisterRoom extends Controller
@@ -15,31 +26,30 @@ class RegisterRoom extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function postRoom(Request $request)
-    {
-        $room = new Room();
-        $form->handleRequest($request);
-        
 
+    {
+        $room = new Rooms();
+        $form = $this->createForm(RoomType::class, $room);
+
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            $room->name = $name;
-            $room->location = $location;
-            $room->city = $city;
-            $room->cp = $cp;
-            $room->description = $description;
-            $room->capacity = $capacity;
-            $room->isRented = $isRented;
-            $room->rentingDateBegin = $rentingDateBegin;
-            $room->rentingDateEnd = $rentingDateEnd;
-            
+
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($room);
             $entityManager->flush();
 
-            return new Response('Saved new product with id '.$room->id());
+            //redirect to a route which send a confirmation that his account is create
+            return $this->redirectToRoute('welcome/connected');
+        }
+
+        return $this->render(
+            'create-room.html.twig',
+            array('form' => $form->createView())
+        );
+
+            //return new Response('Saved new product with id '.$room->id());
             
         }
-    }
 
 }
