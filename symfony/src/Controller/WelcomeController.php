@@ -36,4 +36,11 @@ class WelcomeController extends Controller
     {
         return $this->redirectToRoute('welcome');
     }
+    /**
+     * @Route("/admin", name="admin")
+     */
+    public function admin()
+    {
+        return $this->render('Admin/index.html.twig');
+    }
 }

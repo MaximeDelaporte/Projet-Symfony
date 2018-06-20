@@ -64,7 +64,18 @@ class Users implements UserInterface
 
     public function getRoles()
     {
-        return [$this->getRole()];
+        $roles = $this->roles;
+
+        // Afin d'être sûr qu'un user a toujours au moins 1 role
+        if (empty($roles)) {
+            $roles[] = 'ROLE_USER';
+        }
+
+        return array_unique($roles);
+    }
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
     }
 
     public function getId()
