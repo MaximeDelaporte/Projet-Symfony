@@ -73,7 +73,8 @@ class Users implements UserInterface, \Serializable
 
     public function eraseCredentials()
     {
-        return null;
+        $this->isActive = true;
+        $this->roles = 'ROLE_USER';
     }
     public function getSalt()
     {
@@ -92,6 +93,10 @@ class Users implements UserInterface, \Serializable
     }
 
     public function setRoles($roles): void
+    {
+        $this->roles = $roles;
+    }
+    public function setRoles($roles)
     {
         $this->roles = $roles;
     }

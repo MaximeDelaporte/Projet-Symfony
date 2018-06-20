@@ -151,7 +151,7 @@ class Rooms {
      */
     public function serialize(): string
     {
-        return serialize([$this->id, $this->name, $this->description, $this->location, $this->city]);
+        return serialize([$this->id, $this->name, $this->description, $this->adress, $this->city]);
     }
 
     /**
@@ -159,7 +159,7 @@ class Rooms {
      */
     public function unserialize($serialized): void
     {
-        [$this->id, $this->name, $this->description, $this->location, $this->city] = unserialize($serialized, ['allowed_classes' => false]);
+        [$this->id, $this->name, $this->description, $this->adress, $this->city] = unserialize($serialized, ['allowed_classes' => false]);
     }
 }
 
