@@ -68,7 +68,7 @@ class Users implements UserInterface, \Serializable
     public function __construct()
     {
         $this->isActive = true;
-        $this->roles = 'ROLE_USER';
+        $this->roles = ['ROLE_USER'];
     }
 
     public function eraseCredentials()
@@ -80,6 +80,9 @@ class Users implements UserInterface, \Serializable
     {
         return null;
     }
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
 
     public function getRoles(): array
     {
