@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class connectUserController extends Controller
+class ConnectUserController extends Controller
 {
     /**
      * @Route("/welcome/login", name="login")
