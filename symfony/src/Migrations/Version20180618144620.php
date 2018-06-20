@@ -22,8 +22,8 @@ final class Version20180618144620 extends AbstractMigration
                                     name VARCHAR(120) NOT NULL, 
                                     location VARCHAR(255) NOT NULL,
                                     city VARCHAR(60) NOT NULL,
-                                    cp VARCHAR(5) NOT NULL,
-                                    description VARCHAR(255) NOT NULL,
+                                    postal_code VARCHAR(10) NOT NULL,
+                                    description VARCHAR(255) NULL, 
                                     capacity INT NOT NULL,
                                     is_rented BOOLEAN NOT NULL,
                                     rentingDateBegin DATETIME DEFAULT NULL,
@@ -32,7 +32,6 @@ final class Version20180618144620 extends AbstractMigration
                                     currentRentingUser INT DEFAULT NULL,
                                     PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
 
-        $this->addSql('ALTER TABLE rooms ADD CONSTRAINT FK_34DCD176F5B7AF78 FOREIGN KEY (currentRentingUser) REFERENCES users (id)');
     }
 
     public function down(Schema $schema) : void

@@ -23,8 +23,8 @@ final class Version20180618132413 extends AbstractMigration
                                     lastname VARCHAR(40) NOT NULL,
                                     password VARCHAR(255) NOT NULL,
                                     phone VARCHAR(10)  NULL,
-                                    location VARCHAR(5) NOT NULL,
                                     bankData VARCHAR(50) DEFAULT NULL,
+                                    roles VARCHAR(50) DEFAULT NULL,
                                     PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
     }
 

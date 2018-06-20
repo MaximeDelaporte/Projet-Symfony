@@ -6,7 +6,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 
-
 /**
  * @ORM\Entity
  */
@@ -31,7 +30,7 @@ class Rooms {
      */
     protected $city;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=10)
      */
     protected $cp;
     /**
@@ -45,7 +44,7 @@ class Rooms {
     /**
      * @ORM\Column(type="boolean", options={"default":false})
      */
-    protected $isRented;
+    protected $is_rented;
     /**
      * @ORM\ManyToMany(targetEntity="Options")
      * @ORM\JoinTable(name="rooms_options",
@@ -123,12 +122,12 @@ class Rooms {
 
     public function getIsRented()
     {
-        return $this->isRented;
+        return $this->is_rented;
     }
 
-    public function setIsRented($isRented)
+    public function setIsRented($is_rented)
     {
-        $this->isRented = $isRented;
+        $this->is_rented = $is_rented;
     }
     public function getOptions()
     {
@@ -138,12 +137,15 @@ class Rooms {
     {
         $this->options = $options;
     }
+    public function __toString() {
+        return $this->name;
+    }
     /**
      * {@inheritdoc}
      */
     public function serialize(): string
     {
-        return serialize([$this->id, $this->name, $this->description, $this->location, $this->city]);
+        return serialize([$this->id, $this->name, $this->description, $this->adress, $this->city]);
     }
 
     /**
@@ -151,6 +153,7 @@ class Rooms {
      */
     public function unserialize($serialized): void
     {
-        [$this->id, $this->name, $this->description, $this->location, $this->city] = unserialize($serialized, ['allowed_classes' => false]);
+        [$this->id, $this->name, $this->description, $this->adress, $this->city] = unserialize($serialized, ['allowed_classes' => false]);
     }
 }
+

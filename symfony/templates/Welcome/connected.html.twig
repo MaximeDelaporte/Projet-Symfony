@@ -37,9 +37,7 @@
     </style>
     <div class="welcome-page">
         <ul class="navbar">
-            {% for user in users %}
-            <li>Welcome, {{ user.surname }} </li>
-            {% endfor %}
+
             <li><a href="{{ path('disconnecting') }}" id="logout">Log out</a></li>
         </ul>
         <div class="welcome-body-page">

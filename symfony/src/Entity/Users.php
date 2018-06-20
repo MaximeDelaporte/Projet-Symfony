@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity
  * @UniqueEntity(fields="email", message="This email address is already in use")
  */
-class Users implements UserInterface
+class Users implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id;
@@ -41,30 +41,41 @@ class Users implements UserInterface
      * @Assert\Length(max=4096)
      */
     protected $plainPassword;
-
+    /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+/**
+* @ORM\Column(type="string", length=64)
+*/
+private $roles;
     /**
      * @ORM\Column(type="string", length=64)
      */
     protected $password;
 
+    public function __construct()
+    {
+        $this->isActive = true;
+        $this->roles = 'ROLE_USER';
+    }
+
     public function eraseCredentials()
     {
         return null;
     }
-
-    public function getRole()
+    public function getSalt()
     {
-        return $this->role;
-    }
-
-    public function setRole($role = null)
-    {
-        $this->role = $role;
+        return null;
     }
 
     public function getRoles()
     {
-        return [$this->getRole()];
+        return array($this->roles);
+    }
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
     }
 
     public function getId()
@@ -136,17 +147,12 @@ class Users implements UserInterface
         $this->plainPassword = $plainPassword;
     }
 
-    public function getSalt()
-    {
-        return null;
-    }
-
     /**
      * {@inheritdoc}
      */
     public function serialize(): string
     {
-        return serialize([$this->id, $this->surname, $this->lastname, $this->password]);
+        return serialize([$this->id, $this->surname, $this->email ,$this->lastname, $this->password]);
     }
  
     /**
@@ -154,6 +160,6 @@ class Users implements UserInterface
      */
     public function unserialize($serialized): void
     {
-        [$this->id, $this->surname, $this->lastname ,$this->password] = unserialize($serialized, ['allowed_classes' => false]);
+        [$this->id, $this->surname, $this->lastname ,$this->email ,$this->password] = unserialize($serialized, ['allowed_classes' => false]);
     }
 }

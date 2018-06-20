@@ -10,7 +10,7 @@ class WelcomeController extends Controller
     /**
      * Matches /welcome exactly
      *
-     * @Route("/welcome", name="welcome")
+     * @Route("/", name="welcome")
      */
     public function index()
     {

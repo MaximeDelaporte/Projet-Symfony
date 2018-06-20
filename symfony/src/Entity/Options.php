@@ -22,16 +22,49 @@ class Options
      * @ORM\Column(type="integer")
      */
   protected $price;
-    /**
-
-     * {@inheritdoc}
-
-     * @ORM\ManyToMany(targetEntity="Rooms", mappedBy="rooms")
-
-     */
-  protected $rooms; //instance of Room
 
   public function __construct(){
     $this->rooms = new ArrayCollection();
   }
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    public function __toString() {
+        return $this->name;
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function serialize(): string
+    {
+        return serialize([$this->id, $this->name, $this->price]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized): void
+    {
+        [$this->id, $this->name, $this->price] = unserialize($serialized, ['allowed_classes' => false]);
+    }
 }
