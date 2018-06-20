@@ -23,9 +23,7 @@ class WelcomeController extends Controller
 
     public function connected()
     {
-        return $this->render('welcome/connected.html.twig', [
-            'user_name' => 'My my',
-        ]);
+        return $this->render('welcome/connected.html.twig');
     }
 
     /**
