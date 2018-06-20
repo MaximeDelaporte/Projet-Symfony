@@ -20,16 +20,20 @@ final class Version20180618144620 extends AbstractMigration
         $this->addSql(
             'CREATE TABLE rooms (id INT AUTO_INCREMENT NOT NULL, 
                                     name VARCHAR(120) NOT NULL, 
-                                    adress VARCHAR(255) NOT NULL,
+                                    location VARCHAR(255) NOT NULL,
                                     city VARCHAR(60) NOT NULL,
-                                    postal_code VARCHAR(5) NOT NULL,
+                                    cp VARCHAR(5) NOT NULL,
+                                    description VARCHAR(255) NOT NULL,
                                     capacity INT NOT NULL,
-                                    dispo BOOLEAN NOT NULL,
-                                    date_dispo DATETIME DEFAULT NULL,
+                                    isRented BOOLEAN NOT NULL,
+                                    rentingDateBegin DATETIME DEFAULT NULL,
+                                    rentingDateEnd DATETIME DEFAULT NULL,
+                                    pastRentingUsers INT DEFAULT NULL,
+                                    currentRentingUser INT DEFAULT NULL,
                                     user_id INT DEFAULT NULL,
                                     PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
 
-        $this->addSql('ALTER TABLE rooms ADD CONSTRAINT FK_34DCD176F5B7AF78 FOREIGN KEY (user_id) REFERENCES users (id)');
+        $this->addSql('ALTER TABLE rooms ADD CONSTRAINT FK_34DCD176F5B7AF78 FOREIGN KEY (currentRentingUser) REFERENCES users (id)');
     }
 
     public function down(Schema $schema) : void
