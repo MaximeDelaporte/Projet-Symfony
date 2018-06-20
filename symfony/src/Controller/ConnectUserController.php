@@ -8,28 +8,27 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class ConnectUserController extends Controller
+class ConnectUserController extends AbstractController
 {
     /**
      * @Route("/login", name="login")
      *
      */
-    public function connectUser(Request $request, AuthenticationUtils $authenticationUtils)
+    public function connectUser(AuthenticationUtils $helper): Response
     {
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
+        return $this->render('welcome/login.html.twig', [
+            'last_email' => $helper->getLastUsername(),
+            'error' => $helper->getLastAuthenticationError(),
+        ]);
+    }
 
-        //last email entered by the user
-        $lastEmail = $authenticationUtils->getLastUsername();
-
-        return $this->render('welcome/login.html.twig', array(
-            'last_email' => $lastEmail,
-            'error' => $error,
-        ));
+    public function logout(): void
+    {
+        throw new \Exception('This should never be reached!');
     }
 }

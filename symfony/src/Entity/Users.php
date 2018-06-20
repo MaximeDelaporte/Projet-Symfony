@@ -28,10 +28,19 @@ class Users implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=40)
      */
     protected $surname;
+
     /**
      * @ORM\Column(type="string", length=40)
      */
     protected $lastname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $username;
+
     /**
      * @ORM\Column(type="string", length=40)
      */
@@ -39,6 +48,7 @@ class Users implements UserInterface, \Serializable
 
     /**
      * @Assert\Length(max=4096)
+     * @Assert\NotBlank
      */
     protected $plainPassword;
     /**
@@ -69,7 +79,7 @@ private $roles;
         return null;
     }
 
-    public function getRoles()
+    public function setRoles(array $roles): void
     {
         return array($this->roles);
     }
@@ -78,61 +88,62 @@ private $roles;
         $this->roles = $roles;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setSurname($surname)
+    public function setSurname(string $surname): void
     {
         $this->surname = $surname;
     }
 
-    public function setLastname($lastname)
+    public function setLastname(string $lastname): void
     {
         $this->lastname = $lastname;
     }
 
-    public function getSurname()
+    public function getSurname(): string
     {
         return $this->surname;
     }
 
-    public function getLastname()
+    public function getLastname(): string
     {
         return $this->lastname;
     }
 
-    public function getEmail()
+    public function getUsername(): string
     {
-        return $this->email;
+        return $this->username;
     }
-    public function getUsername()
+
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    public function setEmail($email)
+    public function setEmail(string $email): void
     {
         $this->email = $email;
     }
 
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }
 
-    public function setPassword($password)
+    public function setPassword(string $password): void
     {
         $this->password = $password;
     }
 
-    public function getLocation()
+    public function getLocation(): string
     {
         return $this->location;
     }
 
-    public function setLocation($location)
+    public function setLocation(string $location): void
     {
         $this->location = $location;
     }
@@ -145,6 +156,8 @@ private $roles;
     public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
+
+        return $this;
     }
 
     /**

@@ -8,13 +8,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class WelcomeController extends Controller
 {
     /**
-     * Matches /welcome exactly
+     * Matches / exactly
      *
      * @Route("/", name="welcome")
      */
     public function index()
     {
         return $this->render('welcome/index.html.twig');
+    }
+
+    /**
+     * @Route("/admin", name="admin")
+     */
+    public function admin()
+    {
+        return $this->render('Admin/index.html.twig');
     }
 
     /**
@@ -27,11 +35,16 @@ class WelcomeController extends Controller
     }
 
     /**
+     * La route pour se deconnecter
+     *
+     * Mais celle ci ne doit jamais être executé car symfony l'interceptera avant.
+     *
      * @Route("/welcome/disconnected", name="disconnecting")
      */
 
-    public function disconnected()
+    public function disconnected(): void
     {
-        return $this->redirectToRoute('welcome');
+        //return $this->redirectToRoute('welcome');
+        throw new \Exception('This should never be reached!');
     }
 }
