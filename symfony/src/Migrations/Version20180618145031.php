@@ -18,7 +18,7 @@ final class Version20180618145031 extends AbstractMigration
 
         $this->addSql(
             'CREATE TABLE options (id INT AUTO_INCREMENT NOT NULL, 
-                                    name_option VARCHAR(30) NOT NULL, 
+                                    name VARCHAR(30) NOT NULL, 
                                     price INT NOT NULL,
                                     room_id INT DEFAULT NULL,
                                     PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');

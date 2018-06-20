@@ -19,11 +19,11 @@ class UsersController extends Controller
     */
    public function index(): Response
    {
-      $users = $this->getDoctrine()
-          ->getRepository(Users::class)
-          ->findAll();
+        $users = $this->getDoctrine()
+            ->getRepository(Users::class)
+            ->findAll();
 
-   return $this->render('Welcome/connected.html.twig', ['users' => $users]);
+        return $this->render('Welcome/connected.html.twig', ['users' => $users]);
    }
 
 //    /**

@@ -5,18 +5,18 @@ namespace App\Controller;
 use App\Entity\Receips;
 use App\Entity\Rooms;
 use App\Entity\Options;
-use App\Form\UserType;
+use App\Form\ReceipsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\Routing\Annotation\Route;
 
-class Receip extends Controller
+class ReceipsController extends Controller
 {
     /**
      * @Route("/receips/index", name="receips_index", methods="GET")
      */
-    public function receip()
+    public function index(Request $request)
     {
         $rooms = $this->getDoctrine()
             ->getRepository(Rooms::class)
@@ -28,15 +28,15 @@ class Receip extends Controller
 
 
         $receip = new Receips;
-        $form = $this->createForm(UserType::class, $receip, $rooms);
+        $form = $this->createForm(ReceipsType::class, $receip);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) 
         {
-            
+            // cal function add receips 
 
             // return welcome route
-            return $this->redirectToRoute('welcome/connected');
+            return $this->redirectToRoute('receips/index');
         }
 
         return $this->render('receips/index.html.twig', [
@@ -47,8 +47,7 @@ class Receip extends Controller
     }
 
     /**
-     * check availability at room selected
-     * @Route("/receips/availability", name="receips_availability", methods="GET")
+     * @Route("/receips/availabitlity", name="receips_availability", methods="GET")
      */
     public function availability(Request $request)
     {

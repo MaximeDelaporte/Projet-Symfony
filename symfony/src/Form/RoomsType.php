@@ -13,9 +13,9 @@ class RoomsType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('adress')
+            ->add('location')
             ->add('city')
-            ->add('postal_code')
+            ->add('cp')
             ->add('description')
             ->add('capacity')
             ->add('isRented')

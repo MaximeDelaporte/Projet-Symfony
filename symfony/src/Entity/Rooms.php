@@ -25,7 +25,7 @@ class Rooms {
     /**
      * @ORM\Column(type="string", length=50)
      */
-    protected $adress;
+    protected $location;
     /**
      * @ORM\Column(type="string", length=50)
      */
@@ -33,7 +33,7 @@ class Rooms {
     /**
      * @ORM\Column(type="integer")
      */
-    protected $postal_code;
+    protected $cp;
     /**
      * @ORM\Column(type="string", length=255)
      */

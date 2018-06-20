@@ -25,7 +25,7 @@ final class Version20180618144620 extends AbstractMigration
                                     cp VARCHAR(5) NOT NULL,
                                     description VARCHAR(255) NOT NULL,
                                     capacity INT NOT NULL,
-                                    isRented BOOLEAN NOT NULL,
+                                    is_rented BOOLEAN NOT NULL,
                                     rentingDateBegin DATETIME DEFAULT NULL,
                                     rentingDateEnd DATETIME DEFAULT NULL,
                                     pastRentingUsers INT DEFAULT NULL,

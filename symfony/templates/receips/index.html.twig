@@ -1,23 +1,18 @@
-% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Receips index{% endblock %}
 
 {% block body %}
     <h1>Receips index</h1>
 
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-    
-    <form action="{{ path('create_receip') }}" method="post">
+    <form action="{{ path('receips_index') }}" method="post">
         
         <label for="email">Email: </label>
-        <input type="date" id="rented_date" name="_rented" value="{{ last_rented }}" />
+        <input type="date" id="rented_date" name="rented" />
         
-        {% if info %}
-            <div>{{ info.messageKey }}</div>
-        {% endif %}
+        <a href="{{ path('receips_availability') }}">Create new</a>
 
+        
         <div class="Rooms">
             <select id="roomSelect">
                 {% for room in rooms %}
