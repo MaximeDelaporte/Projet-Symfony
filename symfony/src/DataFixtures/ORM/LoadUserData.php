@@ -22,7 +22,7 @@ class LoadUserData extends Fixture
         $admin->setEmail('ad@min.fr');
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setLocation('skies');
-        $plainPassword = 'Azerty';
+        $plainPassword = 'Azerty123';
         $admin->setPassword($this->encoder->encodePassword($admin, $plainPassword));
 
         $manager->persist($admin);

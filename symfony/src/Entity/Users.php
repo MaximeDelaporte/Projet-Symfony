@@ -43,6 +43,14 @@ class Users implements UserInterface
     protected $plainPassword;
 
     /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+    /**
+    * @ORM\Column(type="string", length=64)
+    */
+    private $roles;
+    /**
      * @ORM\Column(type="string", length=64)
      */
     protected $password;
@@ -73,7 +81,7 @@ class Users implements UserInterface
 
         return array_unique($roles);
     }
-    public function setRoles(array $roles): void
+    public function setRoles(array $roles)
     {
         $this->roles = $roles;
     }
