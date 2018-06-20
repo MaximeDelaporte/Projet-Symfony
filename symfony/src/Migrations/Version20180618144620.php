@@ -30,7 +30,6 @@ final class Version20180618144620 extends AbstractMigration
                                     rentingDateEnd DATETIME DEFAULT NULL,
                                     pastRentingUsers INT DEFAULT NULL,
                                     currentRentingUser INT DEFAULT NULL,
-                                    user_id INT DEFAULT NULL,
                                     PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
 
         $this->addSql('ALTER TABLE rooms ADD CONSTRAINT FK_34DCD176F5B7AF78 FOREIGN KEY (currentRentingUser) REFERENCES users (id)');
