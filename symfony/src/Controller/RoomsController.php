@@ -1,0 +1,93 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Rooms;
+use App\Form\RoomsType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+/**
+ * @Route("/rooms")
+ */
+class RoomsController extends Controller
+{
+    /**
+     * @Route("/", name="rooms_index", methods="GET")
+     */
+    public function index(): Response
+    {
+        $rooms = $this->getDoctrine()
+            ->getRepository(Rooms::class)
+            ->findAll();
+
+        return $this->render('rooms/index.html.twig', ['rooms' => $rooms]);
+    }
+
+    /**
+     * @Route("/new", name="rooms_new", methods="GET|POST")
+     */
+    public function new(Request $request): Response
+    {
+        $room = new Rooms();
+        $form = $this->createForm(RoomsType::class, $room);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($room);
+            $em->flush();
+
+            return $this->redirectToRoute('rooms_index');
+        }
+
+        return $this->render('rooms/new.html.twig', [
+            'room' => $room,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="rooms_show", methods="GET")
+     */
+    public function show(Rooms $room): Response
+    {
+        return $this->render('rooms/show.html.twig', ['room' => $room]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="rooms_edit", methods="GET|POST")
+     */
+    public function edit(Request $request, Rooms $room): Response
+    {
+        $form = $this->createForm(RoomsType::class, $room);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('rooms_edit', ['id' => $room->getId()]);
+        }
+
+        return $this->render('rooms/edit.html.twig', [
+            'room' => $room,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="rooms_delete", methods="DELETE")
+     */
+    public function delete(Request $request, Rooms $room): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$room->getId(), $request->request->get('_token'))) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($room);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('rooms_index');
+    }
+}

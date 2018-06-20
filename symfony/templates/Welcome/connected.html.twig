@@ -10,7 +10,7 @@
         .navbar {
             margin: 0;
             font: 18px/1.5 sans-serif;
-            background: #5eb5e0;
+            background: #77D8CB;
             list-style: none;
             display: flex;
             flex-direction: row;
@@ -37,7 +37,9 @@
     </style>
     <div class="welcome-page">
         <ul class="navbar">
-            <li>Welcome, {{ user_name }} </li>
+            {% for user in users %}
+            <li>Welcome, {{ user.surname }} </li>
+            {% endfor %}
             <li><a href="{{ path('disconnecting') }}" id="logout">Log out</a></li>
         </ul>
         <div class="welcome-body-page">

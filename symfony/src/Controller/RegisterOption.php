@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class RegisterOption extends Controller
 {
     /**
-     * @Route("/postRoom", name="postRoom")
+     * @Route("/postOption", name="postOption")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
