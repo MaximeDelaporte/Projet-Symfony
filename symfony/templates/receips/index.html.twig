@@ -1,0 +1,44 @@
+% extends 'base.html.twig' %}
+
+{% block title %}Receips index{% endblock %}
+
+{% block body %}
+    <h1>Receips index</h1>
+
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    
+    <form action="{{ path('create_receip') }}" method="post">
+        
+        <label for="email">Email: </label>
+        <input type="date" id="rented_date" name="_rented" value="{{ last_rented }}" />
+        
+        {% if info %}
+            <div>{{ info.messageKey }}</div>
+        {% endif %}
+
+        <div class="Rooms">
+            <select id="roomSelect">
+                {% for room in rooms %}
+                    <option value="{{ room.id }}{{ room.name }}">{</option> 
+                {% else %}
+                    <option value="no records found">{</option> 
+                {% endfor %}    
+            </select>
+        </div>
+        
+        <div class="Options">
+            {% for option in options %}
+                <div>
+                    <input type="checkbox" name="optionSelect" value="{{ option.name }}">
+                    <label for="{{ option.name }}">{ option.name }}</label>
+                </div>
+            {% else %}
+                no records found 
+            {% endfor %}    
+        </div>
+    
+        <button type="submit">Create Receip</button>
+    </form>
+{% endblock %}
