@@ -1,14 +1,85 @@
 {% extends 'base.html.twig' %}
 {# templates/register.html.twig #}
-{% block body %}
-{{ form_start(form) }}
-    {{ form_row(form.surname) }}
-    {{ form_row(form.lastname) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.location) }}
-    {{ form_row(form.plainPassword.first) }}
-    {{ form_row(form.plainPassword.second) }}
 
- <button type="submit">Register</button>
-{{ form_end(form) }}
+{% block title %}Welcome in our room locations{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            margin: 0;
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+        }
+        .navbar {
+            margin: 0;
+            font: 18px/1.5 sans-serif;
+            background: #5eb5e0;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: end;
+        }
+        li {
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 2px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .welcome-page {
+            width: 100%;
+        }
+        .welcome-page code { background: #F5F5F5;}
+        .welcome-body-page {
+            padding-left: 10px;
+        }
+        .welcome-body-page h1 {
+            text-align: center;
+        }
+        .form-style{
+            padding-top: 50px;
+            display: flex;
+            justify-content: center;
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+        }
+        .form-style li{
+            list-style: none;
+            padding-top: 10px;
+        }
+        .form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h2{
+            display: flex;
+            justify-content: center;
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+        }
+    </style>
+    <div class="welcome-page">
+        <ul class="navbar">
+            <li>Welcome </li>
+            <li><a href="{{ path('welcome') }}">Home</a></li>
+        </ul>
+        <h2> Register Form</h2>
+        <div class="form-style">
+            {{ form_start(form) }}
+            <div class="form">
+            <ul>
+                <li>{{ form_row(form.surname) }}</li>
+                <li> {{ form_row(form.lastname) }}</li>
+                <li>{{ form_row(form.email) }}</li>
+                <li>{{ form_row(form.location) }}</li>
+                <li>{{ form_row(form.plainPassword.first) }}</li>
+                <li>{{ form_row(form.plainPassword.second) }}</li>
+            </ul>
+                <button type="submit">Register</button>
+
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+    </div>
 {% endblock %}

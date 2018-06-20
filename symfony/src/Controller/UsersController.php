@@ -90,4 +90,14 @@ class UsersController extends Controller
 
         return $this->redirectToRoute('users_index');
     }
+
+//    public function uSortFilter($user)
+//    {
+//        usort($user, function($user1, $user2) {
+//            if ($user1['id'] != $user2['id']) return 0;
+//            return $user1['id'] == $user2['id'] ? 1 : 1;
+//        });
+//    return $user;
+//    }
+
 }

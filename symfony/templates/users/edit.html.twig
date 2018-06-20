@@ -3,11 +3,75 @@
 {% block title %}Edit Users{% endblock %}
 
 {% block body %}
-    <h1>Modifications</h1>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+        }
+        .navbar {
+            margin: 0;
+            font: 18px/1.5 sans-serif;
+            background: #5eb5e0;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: end;
+        }
+        li {
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 2px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .welcome-page {
+            width: 100%;
+        }
+        .welcome-page code { background: #F5F5F5;}
+        .welcome-body-page {
+            padding-left: 10px;
+        }
+        .welcome-body-page h1 {
+            text-align: center;
+        }
+        .form-style{
+            padding-top: 50px;
+            display: flex;
+            justify-content: center;
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+        }
+        .form-style li{
+            list-style: none;
+            padding-top: 10px;
+        }
+        .form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h2{
+            display: flex;
+            justify-content: center;
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+        }
+    </style>
+    <div class="welcome-page">
+        <ul class="navbar">
+            <li>Welcome </li>
+            <li><a href="{{ path('welcome') }}">Home</a></li>
+        </ul>
+        <div class="form">
+            <h1>Modifications</h1>
 
     {{ include('users/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('users_index') }}">back to list</a>
+    <a href="{{ path('users_index') }}">back to menu</a>
 
     {{ include('users/_delete_form.html.twig') }}
+
+        </div>
+    </div>
+
 {% endblock %}

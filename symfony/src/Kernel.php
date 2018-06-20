@@ -8,6 +8,9 @@ use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
+use Knp\Bundle\SnappyBundle\KnpSnappyBundle;
+
 
 class Kernel extends BaseKernel
 {
@@ -33,6 +36,9 @@ class Kernel extends BaseKernel
                 yield new $class();
             }
         }
+        $bundles = array(
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+        );
     }
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
