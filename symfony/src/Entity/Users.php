@@ -80,9 +80,6 @@ class Users implements UserInterface, \Serializable
     {
         return null;
     }
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
 
     public function getRoles(): array
     {
@@ -99,10 +96,7 @@ class Users implements UserInterface, \Serializable
     {
         $this->roles = $roles;
     }
-    public function setRoles($roles)
-    {
-        $this->roles = $roles;
-    }
+
 
     public function getId(): int
     {
@@ -119,12 +113,12 @@ class Users implements UserInterface, \Serializable
         $this->lastname = $lastname;
     }
 
-    public function getSurname(): string
+    public function getSurname(): ?string
     {
         return $this->surname;
     }
 
-    public function getLastname(): string
+    public function getLastname(): ?string
     {
         return $this->lastname;
     }
@@ -139,7 +133,7 @@ class Users implements UserInterface, \Serializable
         return $this->username = $this->surname . $this->lastname;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -159,7 +153,7 @@ class Users implements UserInterface, \Serializable
         $this->password = $password;
     }
 
-    public function getLocation(): string
+    public function getLocation(): ?string
     {
         return $this->location;
     }
@@ -186,7 +180,7 @@ class Users implements UserInterface, \Serializable
      */
     public function serialize(): string
     {
-        return serialize([$this->id, $this->surname, $this->email ,$this->lastname, $this->password]);
+        return serialize([$this->id, $this->surname, $this->email ,$this->lastname, $this->password, $this->roles]);
     }
  
     /**
@@ -194,6 +188,6 @@ class Users implements UserInterface, \Serializable
      */
     public function unserialize($serialized): void
     {
-        [$this->id, $this->surname, $this->lastname ,$this->email ,$this->password] = unserialize($serialized, ['allowed_classes' => false]);
+        [$this->id, $this->surname, $this->lastname ,$this->email ,$this->password, $this->roles] = unserialize($serialized, ['allowed_classes' => false]);
     }
 }
