@@ -8,7 +8,7 @@ pour le détail des actions de chaque membre de l'équipe lors de ce TP, merci d
 Les légendes suivantes correspondent aux membres de l'équipe : 
      L  : Laetitia
      Q  : Quentin
-     MQ : Maxime
+     MD : Maxime
      S  : Stephane
 
 Les implémentations suivantes sont terminées mais non mise en place :
