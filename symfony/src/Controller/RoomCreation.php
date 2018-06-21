@@ -9,7 +9,7 @@
 namespace App\Controller;
 
 use App\Entity\Rooms;
-use App\Form\UserType;
+use App\Form\RoomType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;

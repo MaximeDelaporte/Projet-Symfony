@@ -9,7 +9,7 @@
 namespace App\Form;
 
 use App\Entity\Rooms;
-use App\Entity\Option;
+use App\Entity\Options;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
