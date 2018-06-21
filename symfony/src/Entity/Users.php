@@ -83,7 +83,7 @@ private $roles;
     {
         return array($this->roles);
     }
-    public function setRoles($roles)
+    public function setRoles($roles): void
     {
         $this->roles = $roles;
     }
