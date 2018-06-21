@@ -79,7 +79,7 @@ private $roles;
         return null;
     }
 
-    public function setRoles(array $roles): void
+    public function getRoles()
     {
         return array($this->roles);
     }

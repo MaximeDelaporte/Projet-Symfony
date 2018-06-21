@@ -20,13 +20,11 @@ class Receips
     protected $id;
     
    /**
-    * @ORM\creationDate;
     * @ORM\Column(type="datetime")
     */
     protected $creationDate;
 
     /**
-     * @ORM\value;
      * @ORM\Column(type="integer")
      */
     protected $value;
