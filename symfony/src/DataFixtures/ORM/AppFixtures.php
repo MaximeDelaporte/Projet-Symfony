@@ -6,7 +6,7 @@
  * Time: 14:24
  */
 
-namespace App\DataFixtures;
+namespace App\DataFixtures\ORM;
 
 use App\Entity\Users;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -28,6 +28,7 @@ class AppFixtures extends Fixture
             $user = new Users();
             $user->setSurname($surname);
             $user->setLastname($lastname);
+            $user->setUsername($surname, $lastname);
             $user->setPassword($this->passwordEncoder->encodePassword($user, $password));
             $user->setEmail($email);
             $user->setLocation($location);

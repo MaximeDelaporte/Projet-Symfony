@@ -55,10 +55,11 @@ class Users implements UserInterface, \Serializable
      * @ORM\Column(name="is_active", type="boolean")
      */
     private $isActive;
-/**
-* @ORM\Column(type="string", length=64)
-*/
-private $roles;
+
+    /**
+    * @ORM\Column(type="json")
+    */
+    private $roles = [];
     /**
      * @ORM\Column(type="string", length=64)
      */
@@ -81,8 +82,15 @@ private $roles;
 
     public function getRoles(): array
     {
-        return array($this->roles);
+        $roles = $this->roles;
+
+        if (empty($roles)){
+            $roles[] = 'ROLE_USER';
+        }
+
+        return array_unique($roles);
     }
+
     public function setRoles($roles): void
     {
         $this->roles = $roles;
@@ -113,9 +121,14 @@ private $roles;
         return $this->lastname;
     }
 
+    public function setUsername(string $surname, string $lastname): void
+    {
+        $this->username = $surname . $lastname;
+    }
+
     public function getUsername(): string
     {
-        return $this->username;
+        return $this->username = $this->surname . $this->lastname;
     }
 
     public function getEmail(): string

@@ -24,7 +24,7 @@ class Rooms {
     /**
      * @ORM\Column(type="string", length=50)
      */
-    protected $adress;
+    protected $location;
     /**
      * @ORM\Column(type="string", length=50)
      */
@@ -62,6 +62,12 @@ class Rooms {
     {
         return $this->id;
     }
+
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
     public function getName()
     {
         return $this->name;
@@ -71,14 +77,14 @@ class Rooms {
     {
         $this->name = $name;
     }
-    public function getAdress()
+    public function getLocation()
     {
-        return $this->adress;
+        return $this->location;
     }
 
-    public function setAdress($adress)
+    public function setLocation($location)
     {
-        $this->adress = $adress;
+        $this->location = $location;
     }
     public function getCity()
     {
@@ -145,7 +151,7 @@ class Rooms {
      */
     public function serialize(): string
     {
-        return serialize([$this->id, $this->name, $this->description, $this->adress, $this->city]);
+        return serialize([$this->id, $this->name, $this->description, $this->location, $this->city]);
     }
 
     /**
@@ -153,7 +159,7 @@ class Rooms {
      */
     public function unserialize($serialized): void
     {
-        [$this->id, $this->name, $this->description, $this->adress, $this->city] = unserialize($serialized, ['allowed_classes' => false]);
+        [$this->id, $this->name, $this->description, $this->location, $this->city] = unserialize($serialized, ['allowed_classes' => false]);
     }
 }
 
