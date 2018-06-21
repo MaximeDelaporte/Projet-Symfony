@@ -125,9 +125,9 @@ class Users implements UserInterface, \Serializable
         return $this->lastname;
     }
 
-    public function setUsername(string $surname, string $lastname): void
+    public function setUsername(): void
     {
-        $this->username = $surname . $lastname;
+        $this->username = $this->getSurname(). $this->getLastname();
     }
 
     public function getUsername(): string
@@ -191,15 +191,6 @@ class Users implements UserInterface, \Serializable
         [$this->id, $this->surname, $this->lastname ,$this->email ,$this->password, $this->roles] = unserialize($serialized, ['allowed_classes' => false]);
     }
 
-    public function setUsername(string $username): self
-    {
-        if (empty($username)){
-            $username =  $this->surname . " " . $this->lastname;
-        }
-        $this->username = $username;
-
-        return $this;
-    }
 
     public function getIsActive(): ?bool
     {

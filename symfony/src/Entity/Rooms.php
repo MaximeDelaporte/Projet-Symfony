@@ -163,17 +163,7 @@ class Rooms {
         [$this->id, $this->name, $this->description, $this->adress, $this->city] = unserialize($serialized, ['allowed_classes' => false]);
     }
 
-    public function getLocation(): ?string
-    {
-        return $this->location;
-    }
 
-    public function setLocation(string $location): self
-    {
-        $this->location = $location;
-
-        return $this;
-    }
 
     public function getCp(): ?string
     {
