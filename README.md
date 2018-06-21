@@ -13,7 +13,7 @@ Les légendes suivantes correspondent aux membres de l'équipe :
 
 Les implémentations suivantes sont terminées mais non mise en place :
      - Edition du profil de l'utilisateur connecté
-     - 
+     - Probleme sur la création de compte lors de la suvegarde dans la bdd
 
 
 Bonne correction.
