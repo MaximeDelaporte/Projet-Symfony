@@ -4,7 +4,7 @@ TP de formation a réaliser en groupe permettant à un admin de gérer des salle
 
 Pour le visu du code merci de se rendre sur la branche dev.
 
-pour le détail des actions de chaque membre de l'équipe lors de ce TP, merci de se rendre sur la branche master, fichier CaptureTrello. 
+Pour le détail des actions de chaque membre de l'équipe lors de ce TP, merci de se rendre sur la branche master, fichier CaptureTrello. 
 Les légendes suivantes correspondent aux membres de l'équipe : 
      L  : Laetitia
      Q  : Quentin
