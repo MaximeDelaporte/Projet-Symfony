@@ -6,4 +6,8 @@ Pour le visu du code merci de se rendre sur la branche dev.
 
 pour le détail des actions de chaque membre de l'équipe lors de ce TP, merci de se rendre sur la branche master, fichier CaptureTrello.
 
+Les implémentations suivantes sont terminées mais non mise en place :
+     Edition du profil de l'utilisateur connecté
+
+
 Bonne correction.
