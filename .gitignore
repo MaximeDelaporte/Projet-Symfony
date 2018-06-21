@@ -48,3 +48,7 @@
 /.web-server-pid
 
 .DS_Store
+<<<<<<< HEAD
+=======
+/.idea
+>>>>>>> dev
