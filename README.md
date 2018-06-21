@@ -12,7 +12,8 @@ Les légendes suivantes correspondent aux membres de l'équipe :
      S  : Stephane
 
 Les implémentations suivantes sont terminées mais non mise en place :
-     Edition du profil de l'utilisateur connecté
+     - Edition du profil de l'utilisateur connecté
+     - 
 
 
 Bonne correction.
