@@ -1,6 +1,7 @@
 <?php // src/Entity/Rooms.php
 
 namespace App\Entity;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -160,6 +161,48 @@ class Rooms {
     public function unserialize($serialized): void
     {
         [$this->id, $this->name, $this->description, $this->adress, $this->city] = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
+    public function getLocation(): ?string
+    {
+        return $this->location;
+    }
+
+    public function setLocation(string $location): self
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    public function getCp(): ?string
+    {
+        return $this->cp;
+    }
+
+    public function setCp(string $cp): self
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function addOption(Options $option): self
+    {
+        if (!$this->options->contains($option)) {
+            $this->options[] = $option;
+        }
+
+        return $this;
+    }
+
+    public function removeOption(Options $option): self
+    {
+        if ($this->options->contains($option)) {
+            $this->options->removeElement($option);
+        }
+
+        return $this;
     }
 }
 

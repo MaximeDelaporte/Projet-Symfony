@@ -18,6 +18,11 @@ class Receips
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
     
    /**
     * @ORM\Column(type="datetime")

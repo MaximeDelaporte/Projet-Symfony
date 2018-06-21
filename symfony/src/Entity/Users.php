@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
+use Symfony\Component\Security\Core\Role\Role;
 /**
  * @ORM\Entity
  * @UniqueEntity(fields="email", message="This email address is already in use")
@@ -55,7 +55,6 @@ class Users implements UserInterface, \Serializable
      * @ORM\Column(name="is_active", type="boolean")
      */
     private $isActive;
-
     /**
     * @ORM\Column(type="json")
     */
@@ -68,7 +67,10 @@ class Users implements UserInterface, \Serializable
     public function __construct()
     {
         $this->isActive = true;
-        $this->roles = ['ROLE_USER'];
+        if (empty($this->roles)){
+            $this->roles = new Role('ROLE_USER');
+        }
+
     }
 
     public function eraseCredentials()
@@ -130,7 +132,8 @@ class Users implements UserInterface, \Serializable
 
     public function getUsername(): string
     {
-        return $this->username = $this->surname . $this->lastname;
+        $this->username = $this->surname . " " . $this->lastname;
+        return $this->username;
     }
 
     public function getEmail(): ?string
@@ -171,10 +174,7 @@ class Users implements UserInterface, \Serializable
     public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
-
-        return $this;
     }
-
     /**
      * {@inheritdoc}
      */
@@ -189,5 +189,27 @@ class Users implements UserInterface, \Serializable
     public function unserialize($serialized): void
     {
         [$this->id, $this->surname, $this->lastname ,$this->email ,$this->password, $this->roles] = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
+    public function setUsername(string $username): self
+    {
+        if (empty($username)){
+            $username =  $this->surname . " " . $this->lastname;
+        }
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+
+        return $this;
     }
 }
