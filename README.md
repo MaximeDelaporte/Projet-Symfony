@@ -1,6 +1,6 @@
 # Projet-Symfony
 
-TP de formation permettant à un admin de gérer des salles à louer et à des clients de les réserver. Les salles devront comprendre des forfaits et des modules qui s'ajoutent au prix initial de la formation.
+TP de formation a réaliser en groupe permettant à un admin de gérer des salles à louer et à des clients de les réserver. Les salles devront comprendre des forfaits et des modules qui s'ajoutent au prix initial de la formation.
 
 Pour le visu du code merci de se rendre sur la branche dev.
 
